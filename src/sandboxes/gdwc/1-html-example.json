@@ -1,0 +1,18 @@
+{
+  "dependencies": {},
+  "entry": "/index.html",
+  "environment": "static",
+  "files": {
+    "/index.html": {
+      "code": "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\n    <title>Static Template</title>\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/@gdwc/components@3.6.0/dist/style.css\"\n    />\n  </head>\n  <body>\n    <h1>\n      This is a static template, there is no bundler or bundling involved!\n    </h1>\n    <gdwc-card\n      imgsrc=\"https://placeimg.com/2000/500/arch\"\n      headline=\"Example Headline\"\n      body=\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\"\n      linkhref=\"https://www.google.com\"\n    ></gdwc-card>\n  </body>\n  <script type=\"module\">\n    import \"https://unpkg.com/@gdwc/components@3.6.0/dist/components.umd.js\";\n  </script>\n</html>\n"
+    },
+    "/package.json": {
+      "code": "{\n  \"name\": \"1-html-example\",\n  \"version\": \"1.0.0\",\n  \"description\": \"\",\n  \"main\": \"index.html\",\n  \"scripts\": {\n    \"start\": \"serve\",\n    \"build\": \"echo This is a static template, there is no bundler or bundling involved!\"\n  },\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/codesandbox-app/static-template.git\"\n  },\n  \"keywords\": [],\n  \"author\": \"Ives van Hoorne\",\n  \"license\": \"MIT\",\n  \"bugs\": {\n    \"url\": \"https://github.com/codesandbox-app/static-template/issues\"\n  },\n  \"homepage\": \"https://github.com/codesandbox-app/static-template#readme\",\n  \"devDependencies\": {\n    \"serve\": \"^11.2.0\"\n  }\n}"
+    },
+    "/sandbox.config.json": {
+      "code": "{\n  \"template\": \"static\"\n}\n"
+    }
+  },
+  "is_sse": false,
+  "main": "/index.html"
+}

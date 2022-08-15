@@ -39,6 +39,12 @@ import sb7a from "./sandboxes/7a-path-util.json";
 import sb8 from "./sandboxes/8-query.json";
 import sb9 from "./sandboxes/9-provider.json";
 
+// GDWC Sandboxes
+import gdwcsb1 from "./sandboxes/gdwc/1-html-example.json";
+import gdwcsb1a from "./sandboxes/gdwc/1a-html-example.json";
+import gdwcsb2 from "./sandboxes/gdwc/2-vue-example.json";
+import gdwcsb3 from "./sandboxes/gdwc/3-react-example.json";
+
 // Assets
 const pantheon = require("./assets/pantheon.jpg");
 const npmDrupal = require("./assets/drupal-npm.png");
@@ -49,6 +55,10 @@ const sitecore = require("./assets/sitecore.png");
 const contentful = require("./assets/contentful.png");
 const pyramid = require("./assets/pyramid.png");
 const title = require("./assets/dc-title.png");
+
+// GDWC Assets
+const drupalRendered = require("./assets/gdwc/drupal-rendered.png");
+const openProps = require("./assets/gdwc/open-props.png");
 
 const formidableLogo =
   "https://avatars2.githubusercontent.com/u/5078602?s=280&v=4";
@@ -115,7 +125,7 @@ const Presentation = () => (
         * I'm an Initiative coordinator for Drupal's Decoupled Menus Initiative
         * I live in the Chicago suburbs
         * I enjoy Drupal, JavaScript, and Nintendo
-        * I semi-recently bought a Ms. Pac-Man machine
+        * I own the domain webcomponents.wtf
 
         brianperry.dev, @bricomedy, d.o: brianperry
       `}
@@ -139,42 +149,206 @@ const Presentation = () => (
     </Slide>
     <MarkdownSlideSet>
       {`
-        # Let's start envisioning...
+        The title of this talk is<br />
+        'Envisioning a Design System Maintained by the Drupal Community'<br />
+        so...
+        # ...let's start envisioning
 
         ---
 
         # What If...
-        - there were a set of Drupal-friendly components that anyone could use
-        - and they could be used in Twig
-        - and the same components could be used with any JS framework
-        - and it was easy to extend components or contribute new ones
+        - ...there were a set of Drupal-friendly components that anyone could use
+        - ...and they could be used in Twig
+        - ...and the same components could be used with any JS framework
+        - ...and it was easy to extend components or contribute new ones
 
         ---
 
-        # What if web components made this possible...
-        - Component in html
-        - Component in Twig
-        - Component in React
+        # What if web components made this possible?
 
         ---
 
-        Web components on an infinite time scale
+        # Web Components
+
+        **A set of web platform APIs.**
+
+        - Custom Elements
+        - Shadow DOM
+        - HTML Templates
+
+        *Not tied to a specific framework.*
+
+        `}
+    </MarkdownSlideSet>
+    <Slide>
+      <Sandbox config={gdwcsb1a} openPaths={["/index.html", "/index.js"]} />
+    </Slide>
+    <Slide>
+      <Image
+        src={drupalRendered.default}
+        style={{ width: "auto", height: "100%" }}
+      />
+    </Slide>
+    <Slide>
+      <CodePane language="yml">{`
+        # gdwc_example.libraries.yml
+
+        global:
+          css:
+            base:
+              https://unpkg.com/@gdwc/components@3.6.0/dist/style.css: { type: external, minified: true }
+          js:
+            https://unpkg.com/@gdwc/components@3.6.0/dist/components.umd.js: { type: external }
+      `}</CodePane>
+      <CodePane language="html">{`
+        {# node--article--teaser.html.twig #}
+
+        {% set card_attributes = create_attribute() %}
+        {% set imageSrc = file_url(content.field_image['#items'].entity.uri.value) %}
+
+        <gdwc-card
+          {{ attributes.addClass(classes) }}
+          {{ card_attributes.setAttribute('imgSrc', imageSrc).setAttribute('headline', label|render|striptags|trim).setAttribute('linkHref', url) }}>
+          <p>{{ content.body|render|striptags|trim }}</p>
+        </gdwc-card>
+      `}</CodePane>
+    </Slide>
+    <Slide>
+      <Sandbox config={gdwcsb2} openPaths={["/src/App.vue"]} />
+    </Slide>
+    <Slide>
+      <Sandbox config={gdwcsb3} openPaths={["/src/App.js"]} />
+    </Slide>
+    <MarkdownSlideSet>
+      {`
+        # Web Component Pros
+
+        - Core web APIs
+        - Wide browser support
+        - Shadow DOM = true encapsulation
+        - Write once, use anywhere
 
         ---
 
-        # What if we made a menu web component...
+        # Web Component Cons
+
+        - Ergonomics are rough without a supporting library like Lit.
+        - Styling can be unintuitive
+        - Doesn't have the DX of a framework
+        - Server side rendering challenges
+
+
+        ---
+
+        # On an infinite time scale...
+
+        - Browser native components will be an important part of building for the web.
+        - But how much will web components evolve along the way?
+
+        ## On a much shorter time scale...
+
+        - Web components will be a growing part of your bundle, event if you don't know it.
+
+        ---
+
+        # Want to know more?
+
+        In-depth web components talk from last year: http://bit.ly/wc-dd
+
+        ---
+
+        # What if we made a Drupal menu web component...
+
+        `}
+    </MarkdownSlideSet>
+    <Slide>
+      <Sandbox config={sb1} openPaths={["/index.html", "/index.js"]} />
+    </Slide>
+    <MarkdownSlideSet>
+      {`
+
+        # Let's make more!
+
+        Unfortunately the approach we took for menus proved hard to scale.
 
         ---
 
         # What if we wanted to re-theme these components...
 
-        Go back to menu example first.
+        [https://project.pages.drupalcode.org/gdwc](https://project.pages.drupalcode.org/gdwc)
 
         ---
+
+        ## Too many options, too much responsibility for consumers.
+
+        Most web component styling options require exposing a styling hook:
+
+        - CSS Custom Properties (variables)
+        - Classes
+        - Shadow Parts
+        - Slots
+
+        ---
+
+        # Two options go beyond the Shadow DOM
+
+        Slots
+
+        - Slots are 'light DOM'
+        - Global styles apply (no scoping)
+        - Shifts responsibility to consumer - more markup, more room for error
+
+        ---
+
+        # Two options go beyond the Shadow DOM
+
+        CSS Custom Properties
+
+        - Are inherited, and inherited properties pierce the shadow DOM
+        - Provides a level playing field for entire DOM
+        - Still requires variables to be defined, and used by components
+
+        `}
+    </MarkdownSlideSet>
+    <Slide>
+      <Image
+        src={openProps.default}
+        style={{ margin: "auto", width: "85%", height: "auto" }}
+      />
+    </Slide>
+    <MarkdownSlideSet>
+      {`
+
+        # Open Props
+
+        - Provides default styles that can be scoped to Shadow DOM (or global DOM)
+        - Components can opt in to other theme controls
+        - CSS variables can be defined at any level and cascade
+
+        [Let's experiment in Storybook](https://project.pages.drupalcode.org/gdwc)
+        `}
+    </MarkdownSlideSet>
+    <Slide>
+      <Sandbox config={gdwcsb2} openPaths={["/src/App.vue"]} />
+    </Slide>
+    <MarkdownSlideSet>
+      {`
 
         # What if we wanted to manage state across multiple components...
 
         Go back to menu example first.
+
+        ---
+
+        # What if these components knew a few Drupal tricks?
+
+        ---
+
+        # What if these components could also not care about Drupal at all?
+
+        ---
+
+        # What if we created a web component that could source data from Drupal?
 
         ---
 
@@ -187,6 +361,10 @@ const Presentation = () => (
         ---
 
         # What if we wanted to make an important impact for the PHP community...
+
+        ---
+
+        Credit contributors.
 
         ---
 
