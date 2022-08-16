@@ -115,7 +115,10 @@ const Presentation = () => (
       </Heading>
       <Text textAlign="center">
         Brian Perry
-        <br /> Decoupled Days 2022
+        <br />
+        Decoupled Days 2022
+        <br />
+        Slides: TBD
       </Text>
     </Slide>
     <MarkdownSlide>
@@ -144,13 +147,14 @@ const Presentation = () => (
             results, reaching billions globally with Dynamic WordPress and
             Drupal sites. Learn more at Pantheon.io.
           </Text>
+          <Text>Front-end sites in early access!</Text>
         </Box>
       </Grid>
     </Slide>
     <MarkdownSlideSet>
       {`
         The title of this talk is<br />
-        'Envisioning a Design System Maintained by the Drupal Community'<br />
+        **'Envisioning a Design System Maintained by the Drupal Community'**<br />
         so...
         # ...let's start envisioning
 
@@ -232,7 +236,7 @@ const Presentation = () => (
 
         # Web Component Cons
 
-        - Ergonomics are rough without a supporting library like Lit.
+        - Ergonomics are rough without a supporting library like Lit
         - Styling can be unintuitive
         - Doesn't have the DX of a framework
         - Server side rendering challenges
@@ -269,15 +273,17 @@ const Presentation = () => (
 
         # Let's make more!
 
-        Moving forward with the **Generic Drupal Web Components** project.
+        We moved forward with the **Generic Drupal Web Components** project.
 
-        Unfortunately the approach we took for menus proved hard to scale.
+        Unfortunately the approach we took for menus quickly proved hard to scale.
 
         ---
 
-        # What if we wanted to re-theme these components...
+        # What if we wanted to re-style these components...
 
         [https://project.pages.drupalcode.org/gdwc](https://project.pages.drupalcode.org/gdwc)
+
+        [Let's look at gdwc-menu in Storybook](https://project.pages.drupalcode.org/gdwc/?path=/story/components-menu--primary)
 
         ---
 
@@ -306,9 +312,9 @@ const Presentation = () => (
 
         2. CSS Custom Properties
 
-        - Are inherited, and inherited properties pierce the shadow DOM
+        - Are inherited - inherited properties pierce the shadow DOM
         - Provides a level playing field for entire DOM
-        - Still requires variables to be defined, and used by components
+        - Still requires variables to be defined and used by components
 
         `}
     </MarkdownSlideSet>
@@ -324,10 +330,10 @@ const Presentation = () => (
         # Open Props
 
         - Provides default styles that can be scoped to Shadow DOM (or global DOM)
-        - Components can opt in to other theme controls (tweak wording here)
-        - CSS variables can be defined at any level and cascade
+        - CSS variables can be defined at any level and will cascade
+        - System allows GDWC components to opt in to Open Props theme controls
 
-        [Let's experiment in Storybook](https://project.pages.drupalcode.org/gdwc)
+        [Let's look at gdwc-card in Storybook](https://project.pages.drupalcode.org/gdwc/?path=/story/components-card--primary)
         `}
     </MarkdownSlideSet>
     <Slide>
@@ -335,15 +341,57 @@ const Presentation = () => (
     </Slide>
     <MarkdownSlideSet>
       {`
+        # What if these components could work with any data?
+        # But also *optionally* knew a few things about Drupal?
 
-        # What if these components knew a few Drupal tricks?
-
-        ---
-
-        # What if these components could also not care about Drupal at all?
-
-        `}
+        [See Link component in Storybook](https://project.pages.drupalcode.org/gdwc/?path=/story/elements-link--primary)
+      `}
     </MarkdownSlideSet>
+    <Slide>
+      <CodePane language="javascript">{`
+          // From gdwc-link.js
+
+          render() {
+            // If link field data is passed, use that to populate props.
+            if (this.data) {
+              this.processData(this.data);
+            }
+
+            return html\`
+              <a
+                href="\${ifDefined(this.href)}"
+                rel="\${ifDefined(this.rel)}"
+                target="\${ifDefined(this.target)}"
+                title="\${ifDefined(this.title)}"
+                ><slot></slot
+              ></a>
+            \`;
+          }
+      `}</CodePane>
+    </Slide>
+    <Slide>
+      <CodePane language="javascript">{`
+          // From gdwc-link.js
+
+          /**
+           * Processes data object and the related component properties.
+           *
+           * @param {object} data
+           */
+          processData(data) {
+            if (data?.uri) {
+              const customizedUri = data.uri
+                .replace('entity:', '/')
+                .replace('internal:', '');
+              this.href = customizedUri;
+            }
+
+            if (data?.title) {
+              this.title = data.title;
+            }
+          }
+      `}</CodePane>
+    </Slide>
     <MarkdownSlideSet>
       {`
 
@@ -437,6 +485,9 @@ const Presentation = () => (
     </Slide>
     <MarkdownSlideSet>
       {`
+        # Ideas queue issue
+
+      ---
 
         # What if we created a web component that could source data from Drupal?
 
@@ -447,29 +498,46 @@ const Presentation = () => (
     </Slide>
     <MarkdownSlideSet>
       {`
+        # Page Template Example
 
-        - Show template example in storybook
-
-        ---
-
-        # What if we wanted this project to be sustainable...
-
-        - What components.
-        - More than just me.
-        - Show How to experiment and get started - scaffolder.
-        - Contribution
+        [See Homepage example in Storybook](http://localhost:6006/?path=/story/templates-homepage--primary)
 
         ---
 
-        # What if we wanted to make an important impact for the PHP community...
+        # What if we wanted this project to be sustainable?
+
+        - Needs to be a community effort, not a solo project :)
+        - Meta issue: what components would you want to see? (Update link)
+        - Better yet - jump in and try making a component!
+          - \`npm run create-component\`
 
         ---
 
-        Credit contributors.
+        # What if we wanted to make an important impact for the PHP community?
 
         ---
 
-        # What if the talk was over, but you had questions...
+        # Web Component Server Side Rendering in PHP
+
+        - By default, web components mount client side, which can present problems.
+        - Declaritve Shadow DOM solves this, and is gaining browser adoption.
+        - Existing solutions for SSR require Node.
+
+        **Could Drupal play a key role in improving PHP SSR for Web Components?**
+
+        ---
+
+        # Thanks Contributors!
+
+        - Menu Web Component
+        - GSOC
+        - Andy, Ivan, Chris Webber
+        - Drupal State
+        - Almost certainly you.
+
+        ---
+
+        # What if the talk was over, but you had questions?
       `}
     </MarkdownSlideSet>
     <Slide
