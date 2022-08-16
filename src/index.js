@@ -257,7 +257,7 @@ const Presentation = () => (
 
         ---
 
-        # What if we made a Drupal menu web component...
+        # What if we made a Drupal menu web component?
 
         `}
     </MarkdownSlideSet>
@@ -268,6 +268,8 @@ const Presentation = () => (
       {`
 
         # Let's make more!
+
+        Moving forward with the **Generic Drupal Web Components** project.
 
         Unfortunately the approach we took for menus proved hard to scale.
 
@@ -292,7 +294,7 @@ const Presentation = () => (
 
         # Two options go beyond the Shadow DOM
 
-        Slots
+        1. Slots
 
         - Slots are 'light DOM'
         - Global styles apply (no scoping)
@@ -302,7 +304,7 @@ const Presentation = () => (
 
         # Two options go beyond the Shadow DOM
 
-        CSS Custom Properties
+        2. CSS Custom Properties
 
         - Are inherited, and inherited properties pierce the shadow DOM
         - Provides a level playing field for entire DOM
@@ -322,7 +324,7 @@ const Presentation = () => (
         # Open Props
 
         - Provides default styles that can be scoped to Shadow DOM (or global DOM)
-        - Components can opt in to other theme controls
+        - Components can opt in to other theme controls (tweak wording here)
         - CSS variables can be defined at any level and cascade
 
         [Let's experiment in Storybook](https://project.pages.drupalcode.org/gdwc)
@@ -334,53 +336,21 @@ const Presentation = () => (
     <MarkdownSlideSet>
       {`
 
-        # What if we wanted to manage state across multiple components...
-
-        Go back to menu example first.
-
-        ---
-
         # What if these components knew a few Drupal tricks?
 
         ---
 
         # What if these components could also not care about Drupal at all?
 
-        ---
-
-        # What if we created a web component that could source data from Drupal?
-
-        ---
-
-        # What if we wanted this project to be sustainable...
-
-        What components.
-        More than just me.
-        How to experiment and get started - scaffolder.
-
-        ---
-
-        # What if we wanted to make an important impact for the PHP community...
-
-        ---
-
-        Credit contributors.
-
-        ---
-
-        # What if the talk was over, but you had questions...
-      `}
+        `}
     </MarkdownSlideSet>
-    <Slide
-      backgroundColor="tertiary"
-      backgroundImage="url(https://cdn1.epicgames.com/epic/offer/Journey_SmallSize-2580x1450-75345be2b7101291982f1dcfcedaadbd.jpg)"
-      backgroundOpacity={0.5}
-    >
-      <Heading color="primary">But really...</Heading>
-      <Heading color="primary" fontSize="h3">
-        We're going on a winding journey through Drupal's JavaScript ecosystem.
-      </Heading>
-    </Slide>
+    <MarkdownSlideSet>
+      {`
+
+        # What if we wanted to manage state across multiple components?
+
+        `}
+    </MarkdownSlideSet>
     <Slide>
       <Sandbox config={sb1} openPaths={["/index.html", "/index.js"]} />
     </Slide>
@@ -434,78 +404,18 @@ const Presentation = () => (
 
         ---
 
-        ## My Component Library Needs:
+        ## GDWC Needs:
         - Easy methods to source data from Drupal's JSON:API
         - A solution for managing state across multiple components
 
-        🪄 npm install this-must-be-a-solved-problem
+        🪄 npm install this-must-be-a-solved-problem... right?
 
       `}
     </MarkdownSlideSet>
     <MarkdownSlideSet>
       {`
 
-        ## How do other projects handle this?
-
-        - Druxt (Vue) - Custom JSON:API client using Axios, Vuex Store.
-        - Next for Drupal (React) - < v1.3 uses individual helper functions like getResource, fetch. v1.3 introduces DrupalClient. BYO cache implementation.
-        - Other SDK-like libraries - drupal-sdk, drupal-js-sdk, etc.
-        - Custom decoupled projects - often roll their own
-
-        ---
-
-        ## What would we need to stop solving this problem repeatedly?
-
-        - Something framework agnostic
-        - The ability to use only the utilities your project needs
-        - Out of the box state management
-
-        ---
-
-        ## While we're dreaming about solving the world's problems...
-
-        Could interacting with JSON:API be friendlier for JavaScript developers? 🤔
-
-        How about developers who aren't familiar with Drupal or the JSON:API spec?
-      `}
-    </MarkdownSlideSet>
-    <Slide>
-      <Sandbox config={sb2} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <Slide>
-      <Sandbox config={sb3} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <Slide>
-      <Heading>Avoiding Over-Fetching</Heading>
-      <CodePane language="javascript">{`
-        // Will give us all fields on the recipe and the category
-        /api/recipes/a542e833-edfe-44a3-a6f1-7358b115af4b?include=category
-
-        // Closer, but still returns all fields for the category
-        [...]?include=category&fields[recipes]=title,difficulty,instructions,category
-
-        // Specify fields on category
-        [...]?include=category&fields[recipes]=title,difficulty,instructions,category&fields[categories]=name
-      `}</CodePane>
-      <Text>Side note: drupal-jsonapi-params simplifies this</Text>
-    </Slide>
-    <Slide>
-      <Sandbox config={sb4} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <MarkdownSlideSet>
-      {`
-        ## The GraphQL of it All
-        - GraphQL is really good at preventing over fetching.
-        - The (slightly uninformed) state of GraphQL in Drupal
-          - Contributed module
-          - graphql v3 vs v4
-
-        `}
-    </MarkdownSlideSet>
-    <MarkdownSlideSet>
-      {`
-
-        ## How Drupal State Solves These Problems
+        ## Drupal State
         - Framework agnostic and universal (server and client)
         - Retrieve an object from Drupal’s API, then serve all future requests for that object from local state.
         - Data is represented in a simplified, deserialized structure requiring less existing JSON:API or Drupal knowledge.
@@ -516,9 +426,6 @@ const Presentation = () => (
     <Slide>
       <Sandbox config={sb5} openPaths={["/index.js"]}></Sandbox>
     </Slide>
-    {/* <Slide>
-      <Sandbox config={sb2} openPaths={["/index.js"]}></Sandbox>
-    </Slide> */}
     <Slide>
       <Sandbox config={sb6} openPaths={["/index.js"]}></Sandbox>
     </Slide>
@@ -528,110 +435,41 @@ const Presentation = () => (
     <Slide>
       <Sandbox config={sb7a} openPaths={["/index.js"]}></Sandbox>
     </Slide>
-    <Slide>
-      <CodePane language="javascript">{`
-import { ServerResponse } from 'http';
-import fetchJsonapiEndpoint from './fetchJsonapiEndpoint';
-import defaultFetch from './defaultFetch';
-import { TJsonApiBody } from 'jsona/lib/JsonaTypes';
-import { fetchAdapter } from '../types/types';
+    <MarkdownSlideSet>
+      {`
 
-const translatePath = async (
-  apiUrl: string,
-  path: string,
-  requestInit = {},
-  _res: ServerResponse | boolean = false,
-  fetch: fetchAdapter = defaultFetch
-): Promise<void | TJsonApiBody> => {
-  const response = (await fetchJsonapiEndpoint(
-    apiUrl + '?path=' + path + '&_format=json',
-    requestInit,
-    _res,
-    fetch
-  )) as TJsonApiBody;
-  return response;
-};
-export default translatePath;
-      `}</CodePane>
-    </Slide>
-    <Slide>
-      <Sandbox config={sb8} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <Slide>
-      <Heading>Remember Generic Drupal Web Components?</Heading>
-      <CodePane language="javascript">{`
-        if (solvedProblem === "data sourcing and state management") {
-          const weCanFocusOn = "what makes our Decoupled Drupal project unique";
-        }
-      `}</CodePane>
-    </Slide>
+        # What if we created a web component that could source data from Drupal?
+
+        `}
+    </MarkdownSlideSet>
     <Slide>
       <Sandbox config={sb9} openPaths={["/index.html"]}></Sandbox>
     </Slide>
     <MarkdownSlideSet>
       {`
-        ## Where Do We Go From Here?
 
-        How Drupal stands in the wider JavaScript ecosystem: an unscientific survey.
-      `}
-    </MarkdownSlideSet>
-    <Slide>
-      <Image
-        src={npmDrupal.default}
-        style={{ width: "auto", height: "100%" }}
-      />
-    </Slide>
-    <Slide>
-      <Image
-        src={npmAtDrupal.default}
-        style={{ width: "auto", height: "100%" }}
-      />
-    </Slide>
-    <Slide>
-      <Image src={wp.default} style={{ width: "auto", height: "100%" }} />
-    </Slide>
-    <Slide>
-      <Image src={sitecore.default} style={{ width: "auto", height: "100%" }} />
-    </Slide>
-    <Slide>
-      <Image
-        src={contentful.default}
-        style={{ width: "auto", height: "100%" }}
-      />
-    </Slide>
-    <MarkdownSlideSet>
-      {`
-        ## How could we improve this?
-        - More tools under the @drupal namespace
-        - An official Drupal JavaScript SDK / Client
-        - Decoupled Drupal documentation on Drupal.org
-        `}
-    </MarkdownSlideSet>
-    {/* <Slide>
-      <Image src={pyramid.default} style={{ width: "auto", height: "100%" }} />
-    </Slide> */}
-    <MarkdownSlideSet>
-      {`
-
-        ## Possible Next Steps
-        - Promote existing projects to the @drupal namespace
-          - Start with https://www.npmjs.com/package/drupal-jsonapi-params?
-        - Develop plan to build new SDK like utilities
-          - https://www.drupal.org/project/ideas/issues/3277222
-        - Documentation efforts within Decoupled Menus Initiative
-          - https://www.drupal.org/project/documentation/issues/3276081
+        - Show template example in storybook
 
         ---
 
-        ## Contribution @ DrupalCon (and beyond)
-        - Issues in [Drupal State queue](https://www.drupal.org/project/issues/drupal_state?categories=All)
-        - [Drupal JS Client Ideas queue issue](https://www.drupal.org/project/ideas/issues/3277222)
-        - Decoupled Menus Initiative
-          - [Core Menu Endpoint Issue](https://www.drupal.org/project/drupal/issues/3227824)
-          - [Finalize Documentation](https://www.drupal.org/project/decoupled_menus_initiative/issues/3263181)
-        - [GDWC Components](https://www.drupal.org/project/gdwc/issues/3207883)
-        - Other ideas? I'll be in general contribution - let's talk!
+        # What if we wanted this project to be sustainable...
 
+        - What components.
+        - More than just me.
+        - Show How to experiment and get started - scaffolder.
+        - Contribution
+
+        ---
+
+        # What if we wanted to make an important impact for the PHP community...
+
+        ---
+
+        Credit contributors.
+
+        ---
+
+        # What if the talk was over, but you had questions...
       `}
     </MarkdownSlideSet>
     <Slide
