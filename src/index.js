@@ -220,9 +220,9 @@ const Presentation = () => (
     <Slide>
       <Sandbox config={gdwcsb2} openPaths={["/src/App.vue"]} />
     </Slide>
-    <Slide>
+    {/* <Slide>
       <Sandbox config={gdwcsb3} openPaths={["/src/App.js"]} />
-    </Slide>
+    </Slide> */}
     <MarkdownSlideSet>
       {`
         # Web Component Pros
@@ -279,7 +279,7 @@ const Presentation = () => (
 
         ---
 
-        # What if we wanted to re-style these components...
+        # What if we wanted to re-style these components?
 
         [https://project.pages.drupalcode.org/gdwc](https://project.pages.drupalcode.org/gdwc)
 
@@ -298,19 +298,9 @@ const Presentation = () => (
 
         ---
 
-        # Two options go beyond the Shadow DOM
+        # Gravitating to CSS Custom Properties
 
-        1. Slots
-
-        - Slots are 'light DOM'
-        - Global styles apply (no scoping)
-        - Shifts responsibility to consumer - more markup, more room for error
-
-        ---
-
-        # Two options go beyond the Shadow DOM
-
-        2. CSS Custom Properties
+        CSS Custom Properties:
 
         - Are inherited - inherited properties pierce the shadow DOM
         - Provides a level playing field for entire DOM
@@ -403,19 +393,6 @@ const Presentation = () => (
       <Sandbox config={sb1} openPaths={["/index.html", "/index.js"]} />
     </Slide>
     <Slide>
-      <Heading>Fetching Data</Heading>
-      <CodePane language="javascript">{`
-        connectedCallback() {
-          super.connectedCallback();
-
-          if (this.baseUrl && this.menuId) {
-            this.fetchData(this.baseUrl, this.menuId);
-          }
-        }
-      `}</CodePane>
-      <Text>connectedCallback lifecycle method triggers a fetch...</Text>
-    </Slide>
-    <Slide>
       <CodePane language="javascript">{`
         fetchData(baseURL, menuID) {
           this.isLoading = true;
@@ -450,14 +427,6 @@ const Presentation = () => (
         - 10 cards = 10 fetches
         - 100 cards = you DDOSed yo' self
 
-        ---
-
-        ## GDWC Needs:
-        - Easy methods to source data from Drupal's JSON:API
-        - A solution for managing state across multiple components
-
-        🪄 npm install this-must-be-a-solved-problem... right?
-
       `}
     </MarkdownSlideSet>
     <MarkdownSlideSet>
@@ -465,29 +434,21 @@ const Presentation = () => (
 
         ## Drupal State
         - Framework agnostic and universal (server and client)
-        - Retrieve an object from Drupal’s API, then serve all future requests for that object from local state.
-        - Data is represented in a simplified, deserialized structure requiring less existing JSON:API or Drupal knowledge.
-        - Pick and choose individual utility functions like fetchJsonApiEndpoint, translatePath, and fetchToken
+        - Retrieve an object from Drupal’s API, then serve all future requests from local state.
+        - Data is represented in a simplified, deserialized structure
+
+        DrupalCon Talk: [https://bit.ly/ds-sdk-pdx](https://bit.ly/ds-sdk-pdx)
 
       `}
     </MarkdownSlideSet>
     <Slide>
       <Sandbox config={sb5} openPaths={["/index.js"]}></Sandbox>
     </Slide>
-    <Slide>
+    {/* <Slide>
       <Sandbox config={sb6} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <Slide>
-      <Sandbox config={sb7} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
-    <Slide>
-      <Sandbox config={sb7a} openPaths={["/index.js"]}></Sandbox>
-    </Slide>
+    </Slide> */}
     <MarkdownSlideSet>
       {`
-        # Ideas queue issue
-
-      ---
 
         # What if we created a web component that could source data from Drupal?
 
@@ -496,18 +457,20 @@ const Presentation = () => (
     <Slide>
       <Sandbox config={sb9} openPaths={["/index.html"]}></Sandbox>
     </Slide>
-    <MarkdownSlideSet>
+    {/* <MarkdownSlideSet>
       {`
         # Page Template Example
 
         [See Homepage example in Storybook](http://localhost:6006/?path=/story/templates-homepage--primary)
 
-        ---
-
+        `}
+    </MarkdownSlideSet> */}
+    <MarkdownSlideSet>
+      {`
         # What if we wanted this project to be sustainable?
 
         - Needs to be a community effort, not a solo project :)
-        - Meta issue: what components would you want to see? (Update link)
+        - Meta issue: what components would you want to see?
         - Better yet - jump in and try making a component!
           - \`npm run create-component\`
 
@@ -520,7 +483,7 @@ const Presentation = () => (
         # Web Component Server Side Rendering in PHP
 
         - By default, web components mount client side, which can present problems.
-        - Declaritve Shadow DOM solves this, and is gaining browser adoption.
+        - Declarative Shadow DOM solves this, and is gaining browser adoption.
         - Existing solutions for SSR require Node.
 
         **Could Drupal play a key role in improving PHP SSR for Web Components?**
