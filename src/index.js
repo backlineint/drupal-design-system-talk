@@ -492,11 +492,11 @@ const Presentation = () => (
 
         # Thanks Contributors!
 
-        - Menu Web Component
-        - GSOC
-        - Andy, Ivan, Chris Webber
-        - Drupal State
-        - Almost certainly you.
+        - Menu Web Component - nod_, baddysonja, gabesuillice cosmicdreams, knowak, joegraduate, hedrickbt, D34dMan, jenniferaube, lhockley, darren-oh
+        - Summer of Code - @muthu12345
+        - GDWC - andy-blum, finnsky
+        - Drupal State - coby.sher, jayhuskins
+        - Anyone I missed, and almost certainly you.
 
         ---
 
