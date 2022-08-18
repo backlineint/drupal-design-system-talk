@@ -118,7 +118,7 @@ const Presentation = () => (
         <br />
         Decoupled Days 2022
         <br />
-        Slides: TBD
+        Slides: https://bit.ly/drupal-ds-dd
       </Text>
     </Slide>
     <MarkdownSlide>
