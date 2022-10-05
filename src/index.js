@@ -116,15 +116,15 @@ const Presentation = () => (
       <Text textAlign="center">
         Brian Perry
         <br />
-        Decoupled Days 2022
+        BADCamp 2022
         <br />
-        Slides: https://bit.ly/drupal-ds-dd
+        Slides: https://bit.ly/drupal-ds-bad
       </Text>
     </Slide>
     <MarkdownSlide>
       {`
         # Brian!
-        * I'm a Sr. Software Engineer at Pantheon
+        * I'm a Staff Software Engineer at Pantheon
         * I'm an Initiative coordinator for Drupal's Decoupled Menus Initiative
         * I live in the Chicago suburbs
         * I enjoy Drupal, JavaScript, and Nintendo
@@ -251,13 +251,13 @@ const Presentation = () => (
 
         ## On a much shorter time scale...
 
-        - Web components will be a growing part of your bundle, event if you don't know it.
+        - Web components will be a growing part of your bundle, even if you don't know it.
 
         ---
 
         # Want to know more?
 
-        In-depth web components talk from last year: http://bit.ly/wc-dd
+        In-depth web components talk from past Decoupled Days: http://bit.ly/wc-dd
 
         ---
 
@@ -470,7 +470,7 @@ const Presentation = () => (
         # What if we wanted this project to be sustainable?
 
         - Needs to be a community effort, not a solo project :)
-        - Meta issue: what components would you want to see?
+        - Meta issue: [what components would you want to see](https://www.drupal.org/project/gdwc/issues/3207883)?
         - Better yet - jump in and try making a component!
           - \`npm run create-component\`
 
@@ -501,12 +501,14 @@ const Presentation = () => (
         ---
 
         # What if the talk was over, but you had questions?
+
+        ---
+
+        # Congratulations, you found the secret bonus slide!
+        ### The presentation is now yours.
+        ### Enjoy!
       `}
     </MarkdownSlideSet>
-    <Slide
-      backgroundColor="tertiary"
-      backgroundImage="url(https://slideplayer.com/slide/269033/1/images/15/Discussion+Time%21.jpg)"
-    ></Slide>
   </Deck>
 );
 
