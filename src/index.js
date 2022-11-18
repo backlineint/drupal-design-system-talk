@@ -116,9 +116,9 @@ const Presentation = () => (
       <Text textAlign="center">
         Brian Perry
         <br />
-        BADCamp 2022
+        NEDCamp 2022
         <br />
-        Slides: https://bit.ly/drupal-ds-bad
+        Slides: https://bit.ly/drupal-ds-nedcamp
       </Text>
     </Slide>
     <MarkdownSlide>
@@ -133,7 +133,7 @@ const Presentation = () => (
         brianperry.dev, @bricomedy, d.o: brianperry
       `}
     </MarkdownSlide>
-    <Slide
+    {/* <Slide
       backgroundColor="tertiary"
       backgroundImage="url(https://ok6static.oktacdn.com/fs/bco/7/fs0eurcntlVV4NwN92p7)"
     >
@@ -150,7 +150,7 @@ const Presentation = () => (
           <Text>Front-end sites in early access!</Text>
         </Box>
       </Grid>
-    </Slide>
+    </Slide> */}
     <MarkdownSlideSet>
       {`
         The title of this talk is<br />

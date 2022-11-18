@@ -6,6 +6,8 @@ Supporting Slides and resources for 'Envisioning a Design System Maintained by t
 
 This talk was presented at:
 
+- [NEDCamp 2022](https://nedcamp.org/sessions/2022/envisioning-design-system-maintained-drupal-community)
+
 - [BADCamp 2022](https://www.badcamp.org/)
 
 - [Decoupled Days 2022](https://2022.decoupleddays.com/session/envisioning-design-system-maintained-drupal-community) - August 18, 2022
