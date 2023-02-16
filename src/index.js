@@ -116,16 +116,16 @@ const Presentation = () => (
       <Text textAlign="center">
         Brian Perry
         <br />
-        NEDCamp 2022
+        Florida DrupalCamp 2023
         <br />
-        Slides: https://bit.ly/drupal-ds-nedcamp
+        Slides: https://bit.ly/drupal-ds-fldc
       </Text>
     </Slide>
     <MarkdownSlide>
       {`
         # Brian!
         * I'm a Staff Software Engineer at Pantheon
-        * I'm an Initiative coordinator for Drupal's Decoupled Menus Initiative
+        * Initiative coordinator for Drupal's Decoupled Menus Initiative
         * I live in the Chicago suburbs
         * I enjoy Drupal, JavaScript, and Nintendo
         * I own the domain webcomponents.wtf
