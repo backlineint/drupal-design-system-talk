@@ -6,6 +6,8 @@ Supporting Slides and resources for 'Envisioning a Design System Maintained by t
 
 This talk was presented at:
 
+- [MidCamp 2023](https://www.midcamp.org/2023/topic-proposal/envisioning-design-system-maintained-drupal-community)
+
 - [Florida DrupalCamp 2023](https://www.fldrupal.camp/session/envisioning-design-system-maintained-drupal-community)
 
 - [NEDCamp 2022](https://nedcamp.org/sessions/2022/envisioning-design-system-maintained-drupal-community)

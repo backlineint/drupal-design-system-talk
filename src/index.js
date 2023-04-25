@@ -116,16 +116,16 @@ const Presentation = () => (
       <Text textAlign="center">
         Brian Perry
         <br />
-        Florida DrupalCamp 2023
+        MidCamp 2023
         <br />
-        Slides: https://bit.ly/drupal-ds-fldc
+        Slides: https://bit.ly/drupal-ds-mc
       </Text>
     </Slide>
     <MarkdownSlide>
       {`
         # Brian!
         * I'm a Staff Software Engineer at Pantheon
-        * Initiative coordinator for Drupal's Decoupled Menus Initiative
+        * (Former) initiative coordinator for Drupal's Decoupled Menus Initiative
         * I live in the Chicago suburbs
         * I enjoy Drupal, JavaScript, and Nintendo
         * I own the domain webcomponents.wtf
@@ -133,7 +133,7 @@ const Presentation = () => (
         brianperry.dev, @bricomedy, d.o: brianperry
       `}
     </MarkdownSlide>
-    {/* <Slide
+    <Slide
       backgroundColor="tertiary"
       backgroundImage="url(https://ok6static.oktacdn.com/fs/bco/7/fs0eurcntlVV4NwN92p7)"
     >
@@ -147,10 +147,20 @@ const Presentation = () => (
             results, reaching billions globally with Dynamic WordPress and
             Drupal sites. Learn more at Pantheon.io.
           </Text>
-          <Text>Front-end sites in early access!</Text>
+          <Text>Front-end sites in early access</Text>
         </Box>
       </Grid>
-    </Slide> */}
+    </Slide>
+    <Slide>
+      <Grid gridTemplateColumns="1fr 1fr" gridColumnGap={50} style={{alignItems: "center"}}>
+        <Box>
+          <Heading fontSize="h2" color="secondary" style={{height: "100%"}}>
+            As an individual, I do not support hate.
+          </Heading>
+        </Box>
+        <Box><Image src="https://image.spreadshirtmedia.net/image-server/v1/compositions/T1270A743PA3071PT17X45Y52D307748577W20970H20675/views/1,width=650,height=650,appearanceId=743/in-recognition-of-pride-month-we-modifying-our-logo-to-the-progress-pride-flag.jpg"></Image></Box>
+      </Grid>
+    </Slide>
     <MarkdownSlideSet>
       {`
         The title of this talk is<br />
@@ -467,16 +477,12 @@ const Presentation = () => (
     </MarkdownSlideSet> */}
     <MarkdownSlideSet>
       {`
-        # What if we wanted this project to be sustainable?
+        # What's next?
 
-        - Needs to be a community effort, not a solo project :)
-        - Meta issue: [what components would you want to see](https://www.drupal.org/project/gdwc/issues/3207883)?
-        - Better yet - jump in and try making a component!
-          - \`npm run create-component\`
-
-        ---
-
-        # What if we wanted to make an important impact for the PHP community?
+        - Does GDWC in its current state still make sense?
+        - Drupal JS Client
+        - Single Directory Components
+        - Making Drupal more web component friendly
 
         ---
 
